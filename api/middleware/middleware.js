@@ -1,7 +1,11 @@
 const Users = require('../users/users-model');
 
 function logger(req, res, next) {
-  console.log(req.method, req.url, req.timestamp);
+  console.log(
+    `Method: '${req.method}' called on the '${
+      req.url
+    }' endpoint, at [${new Date().toLocaleString()}]`
+  );
   next();
 }
 
