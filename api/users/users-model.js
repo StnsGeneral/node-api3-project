@@ -14,9 +14,7 @@ function get() {
 }
 
 function getById(id) {
-  return db('users')
-    .where({ id })
-    .first();
+  return db('users').where({ id }).first();
 }
 
 function getUserPosts(userId) {
@@ -29,7 +27,7 @@ function getUserPosts(userId) {
 function insert(user) {
   return db('users')
     .insert(user)
-    .then(ids => {
+    .then((ids) => {
       return getById(ids[0]);
     });
 }
@@ -38,13 +36,11 @@ function update(id, changes) {
   return db('users')
     .where({ id })
     .update(changes)
-    .then(rows => {
+    .then((rows) => {
       return getById(id);
     });
 }
 
 function remove(id) {
-  return db('users')
-    .where('id', id)
-    .del();
+  return db('users').where('id', id).del();
 }
